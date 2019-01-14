@@ -8,17 +8,15 @@
  */
 
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import hoistStatics from 'hoist-non-react-statics';
+import styleContext from '../src/styleContext';
 
-const contextTypes = {
-  insertCss: PropTypes.func,
-};
 
 function withStyles(...styles) {
   return function wrapWithStyles(ComposedComponent) {
     class WithStyles extends Component {
-      componentWillMount() {
+      constructor(props, context) {
+        super(props);
         this.removeCss = this.context.insertCss(...styles);
       }
 
@@ -36,7 +34,7 @@ function withStyles(...styles) {
     const displayName = ComposedComponent.displayName || ComposedComponent.name || 'Component';
 
     WithStyles.displayName = `WithStyles(${displayName})`;
-    WithStyles.contextTypes = contextTypes;
+    WithStyles.contextType = styleContext;
     WithStyles.ComposedComponent = ComposedComponent;
 
     return hoistStatics(WithStyles, ComposedComponent);
