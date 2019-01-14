@@ -9,7 +9,7 @@
 
 import React, { Component } from 'react';
 import hoistStatics from 'hoist-non-react-statics';
-import styleContext from '../src/styleContext';
+import styleContext from './styleContext';
 
 
 function withStyles(...styles) {
@@ -17,7 +17,7 @@ function withStyles(...styles) {
     class WithStyles extends Component {
       constructor(props, context) {
         super(props);
-        this.removeCss = this.context.insertCss(...styles);
+        this.removeCss = context.insertCss(...styles);
       }
 
       componentWillUnmount() {
