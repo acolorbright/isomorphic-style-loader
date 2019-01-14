@@ -9,7 +9,7 @@
 
 import React, { Component } from 'react';
 import hoistStatics from 'hoist-non-react-statics';
-import styleContext from '../src/styleContext';
+import styleContext from './styleContext';
 
 
 function withStyles(...styles) {
