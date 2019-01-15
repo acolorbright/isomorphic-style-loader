@@ -10,7 +10,7 @@
 import React from 'react';
 
 const StyleContext = React.createContext({
-  insertCss: null,
+  insertCss: () => {},
 });
 
 export default StyleContext;
